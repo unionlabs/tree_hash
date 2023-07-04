@@ -1,14 +1,14 @@
-use ssz_derive::Encode;
+use ssz::Encode;
+use ssz_types::{typenum::U32, VariableList};
 use tree_hash::{Hash256, MerkleHasher, PackedEncoding, TreeHash, BYTES_PER_CHUNK};
-use tree_hash_derive::TreeHash;
 
 #[derive(Encode)]
 struct HashVec {
-    vec: Vec<u8>,
+    vec: VariableList<u8, U32>,
 }
 
-impl From<Vec<u8>> for HashVec {
-    fn from(vec: Vec<u8>) -> Self {
+impl HashVec {
+    fn new(vec: VariableList<u8, U32>) -> Self {
         Self { vec }
     }
 }
@@ -99,11 +99,11 @@ enum VariableTrans {
 #[test]
 fn variable_trans() {
     assert_eq!(
-        VariableTrans::A(HashVec::from(vec![2])).tree_hash_root(),
+        VariableTrans::A(HashVec::new(vec![2_u8].try_into().unwrap())).tree_hash_root(),
         u8_hash_concat(2, 1)
     );
     assert_eq!(
-        VariableTrans::B(HashVec::from(vec![2])).tree_hash_root(),
+        VariableTrans::B(HashVec::new(vec![2_u8].try_into().unwrap())).tree_hash_root(),
         u8_hash_concat(2, 1)
     );
 }
@@ -118,11 +118,11 @@ enum VariableUnion {
 #[test]
 fn variable_union() {
     assert_eq!(
-        VariableUnion::A(HashVec::from(vec![2])).tree_hash_root(),
+        VariableUnion::A(HashVec::new(vec![2].try_into().unwrap())).tree_hash_root(),
         mix_in_selector(u8_hash_concat(2, 1), 0)
     );
     assert_eq!(
-        VariableUnion::B(HashVec::from(vec![2])).tree_hash_root(),
+        VariableUnion::B(HashVec::new(vec![2].try_into().unwrap())).tree_hash_root(),
         mix_in_selector(u8_hash_concat(2, 1), 1)
     );
 }

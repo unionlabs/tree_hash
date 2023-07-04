@@ -14,12 +14,12 @@ categories = ["cryptography::cryptocurrencies"]
 ethereum-types = "0.14.1"
 ethereum_hashing = "1.0.0-beta.2"
 smallvec = "1.6.1"
+tree_hash_derive = { path = "../tree_hash_derive", version = "0.5.2" }
 
 [dev-dependencies]
 rand = "0.8.5"
-tree_hash_derive = { path = "../tree_hash_derive", version = "0.5.2" }
-ethereum_ssz = "1.0.0-beta.2"
-ethereum_ssz_derive = "1.0.0-beta.2"
+ethereum_ssz = { git = "https://github.com/unionlabs/ethereum_ssz", branch = "vec-isnt-valid-ssz" }
+ssz_types = { git = "https://github.com/unionlabs/ssz_types", branch = "try-from-instead-of-from" }
 
 [features]
 arbitrary = ["ethereum-types/arbitrary"]

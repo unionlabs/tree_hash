@@ -7,6 +7,9 @@ pub use merkle_hasher::{Error, MerkleHasher};
 pub use merkleize_padded::merkleize_padded;
 pub use merkleize_standard::merkleize_standard;
 
+extern crate tree_hash_derive;
+pub use tree_hash_derive::TreeHash;
+
 use ethereum_hashing::{hash_fixed, ZERO_HASHES, ZERO_HASHES_MAX_INDEX};
 use smallvec::SmallVec;
 
@@ -74,7 +77,7 @@ pub fn mix_in_length(root: &Hash256, length: usize) -> Hash256 {
 ///
 /// ## Specification
 ///
-/// ```ignore,text
+/// ```plaintext
 /// mix_in_selector: Given a Merkle root root and a type selector selector ("uint256" little-endian
 /// serialization) return hash(root + selector).
 /// ```

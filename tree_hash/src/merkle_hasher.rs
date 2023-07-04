@@ -72,7 +72,7 @@ impl HalfNode {
 ///
 /// ### Start
 ///
-/// ```ignore
+/// ```plaintext
 ///           -
 ///          / \
 ///         -   -
@@ -82,7 +82,7 @@ impl HalfNode {
 ///
 /// ### Provide first leaf
 ///
-/// ```ignore
+/// ```plaintext
 ///           -
 ///          / \
 ///         2   -
@@ -92,7 +92,7 @@ impl HalfNode {
 ///
 /// ### Provide second leaf
 ///
-/// ```ignore
+/// ```plaintext
 ///           1
 ///          / \
 ///         X   -
@@ -102,7 +102,7 @@ impl HalfNode {
 ///
 /// ### Provide third leaf
 ///
-/// ```ignore
+/// ```plaintext
 ///           1
 ///          / \
 ///         X   3
@@ -112,7 +112,7 @@ impl HalfNode {
 ///
 /// ### Provide fourth and final leaf
 ///
-/// ```ignore
+/// ```plaintext
 ///           1
 ///          / \
 ///         X   X
@@ -312,7 +312,7 @@ impl MerkleHasher {
     /// will also provide the right-node for the `1` node. This function will complete both of
     /// those nodes and ultimately find the root of the tree.
     ///
-    /// ```ignore
+    /// ```plaintext
     ///           1 <-- completed
     ///          / \
     ///         2   3  <-- completed
