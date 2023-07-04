@@ -3,3 +3,5 @@ members = [
     "tree_hash",
     "tree_hash_derive",
 ]
+
+resolver = "2"
