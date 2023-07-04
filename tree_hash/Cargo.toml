@@ -11,8 +11,8 @@ keywords = ["ethereum"]
 categories = ["cryptography::cryptocurrencies"]
 
 [dependencies]
-ethereum-types = "0.14.1"
-ethereum_hashing = "1.0.0-beta.2"
+ethereum-types = { version = "0.14.1", default-features = false }
+ethereum_hashing = { version = "1.0.0-beta.2", default-features = false, features = ["zero_hash_cache"] }
 smallvec = "1.6.1"
 tree_hash_derive = { path = "../tree_hash_derive", version = "0.5.2" }
 
@@ -22,4 +22,7 @@ ethereum_ssz = { git = "https://github.com/unionlabs/ethereum_ssz", branch = "ve
 ssz_types = { git = "https://github.com/unionlabs/ssz_types", branch = "try-from-instead-of-from" }
 
 [features]
+detect-cpufeatures = [
+  "ethereum_hashing/detect-cpufeatures"
+]
 arbitrary = ["ethereum-types/arbitrary"]
