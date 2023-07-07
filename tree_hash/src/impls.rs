@@ -8,6 +8,7 @@ fn int_to_hash256(int: u64) -> Hash256 {
     Hash256::from_slice(&bytes)
 }
 
+// REVIEW: Use T::BITS instead of passing $bit_size?
 macro_rules! impl_for_bitsize {
     ($type: ident, $bit_size: expr) => {
         impl TreeHash for $type {
